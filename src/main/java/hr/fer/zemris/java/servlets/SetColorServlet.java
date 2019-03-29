@@ -17,14 +17,14 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name="setcolor", urlPatterns={"/setcolor"})
 public class SetColorServlet extends HttpServlet {
-	/** Serialization UID. */
-	private static final long serialVersionUID = 1L;
+    /** Serialization UID. */
+    private static final long serialVersionUID = 1L;
 
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String color = req.getParameter("color");
-		req.getSession().setAttribute("bgcolor", color);
-		
-		req.getRequestDispatcher("/colors.jsp").forward(req, resp);
-	}
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String color = req.getParameter("color");
+        req.getSession().setAttribute("bgcolor", color);
+
+        req.getRequestDispatcher("/colors.jsp").forward(req, resp);
+    }
 }

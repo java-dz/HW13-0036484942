@@ -31,55 +31,55 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name="trigonometric", urlPatterns={"/trigonometric"})
 public class TrigonometricServlet extends HttpServlet {
-	/** Serialization UID. */
-	private static final long serialVersionUID = 1L;
+    /** Serialization UID. */
+    private static final long serialVersionUID = 1L;
 
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		int a = 0;
-		int b = 360;
-		
-		String strA = req.getParameter("a");
-		String strB = req.getParameter("b");
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int a = 0;
+        int b = 360;
 
-		try {
-			a = Integer.parseInt(strA);
-		} catch (NumberFormatException ignorable) {}
+        String strA = req.getParameter("a");
+        String strB = req.getParameter("b");
 
-		try {
-			b = Integer.parseInt(strB);
-		} catch (NumberFormatException ignorable) {}
+        try {
+            a = Integer.parseInt(strA);
+        } catch (NumberFormatException ignorable) {}
 
-		if (a > b) {
-			int tmp = a;
-			a = b;
-			b = tmp;
-		}
+        try {
+            b = Integer.parseInt(strB);
+        } catch (NumberFormatException ignorable) {}
 
-		if (b > a + 720) {
-			b = a + 720;
-		}
-		
-		// Calculate and serve in lists as Strings
-		DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols(Locale.US);
-		DecimalFormat df = new DecimalFormat("#.##########", otherSymbols);
-		
-		List<String[]> trigList = new ArrayList<>();
-		
-		for (int i = a; i <= b; i++) {
-			double rads = Math.toRadians(i);
-			
-			String n = Integer.toString(i);
-			String sin = df.format(Math.sin(rads));
-			String cos = df.format(Math.cos(rads));
-			
-			// separate results with '&'
-			trigList.add(new String[]{n, sin, cos});
-		}
-		
-		req.setAttribute("trigList", trigList);
-		
-		req.getRequestDispatcher("/WEB-INF/pages/trigonometric.jsp").forward(req, resp);
-	}
-	
+        if (a > b) {
+            int tmp = a;
+            a = b;
+            b = tmp;
+        }
+
+        if (b > a + 720) {
+            b = a + 720;
+        }
+
+        // Calculate and serve in lists as Strings
+        DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols(Locale.US);
+        DecimalFormat df = new DecimalFormat("#.##########", otherSymbols);
+
+        List<String[]> trigList = new ArrayList<>();
+
+        for (int i = a; i <= b; i++) {
+            double rads = Math.toRadians(i);
+
+            String n = Integer.toString(i);
+            String sin = df.format(Math.sin(rads));
+            String cos = df.format(Math.cos(rads));
+
+            // separate results with '&'
+            trigList.add(new String[]{n, sin, cos});
+        }
+
+        req.setAttribute("trigList", trigList);
+
+        req.getRequestDispatcher("/WEB-INF/pages/trigonometric.jsp").forward(req, resp);
+    }
+
 }

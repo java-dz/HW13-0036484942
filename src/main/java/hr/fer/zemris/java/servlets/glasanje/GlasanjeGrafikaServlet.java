@@ -29,63 +29,63 @@ import hr.fer.zemris.java.servlets.glasanje.GlasanjeUtil.BandInfo;
  */
 @WebServlet(name="glasanje-grafika", urlPatterns={"/glasanje-grafika"})
 public class GlasanjeGrafikaServlet extends HttpServlet {
-	/** Serialization UID. */
-	private static final long serialVersionUID = 1L;
+    /** Serialization UID. */
+    private static final long serialVersionUID = 1L;
 
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.setContentType("image/png");
-		
-		List<BandInfo> bandList = GlasanjeUtil.getBandList(req, resp);
-		
-		// Create dataset
-		PieDataset dataset = createDataset(bandList);
-		// Create a chart based on the dataset
-		JFreeChart chart = createChart(dataset, "Rezultati glasanja");
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setContentType("image/png");
 
-		// Convert to an image and encode it
-		byte[] image = ChartUtilities.encodeAsPNG(chart.createBufferedImage(400, 300));
-		resp.getOutputStream().write(image);
-	}
-	
-	/**
-	 * Creates a simple dataset.
-	 * 
-	 * @param bandList band list with vote results
-	 * @return pie dataset
-	 */
-	private PieDataset createDataset(List<BandInfo> bandList) {
-		DefaultPieDataset result = new DefaultPieDataset();
-		
-		bandList.forEach(bandInfo -> {
-			result.setValue(bandInfo.name, bandInfo.getVotes());
-		});
-		
-		return result;
-	}
+        List<BandInfo> bandList = GlasanjeUtil.getBandList(req, resp);
 
-	/**
-	 * Creates an instance of {@code JFreeChart} whose dataset is specified by
-	 * the {@code PieDataset}.
-	 * 
-	 * @param dataset pie dataset
-	 * @param title chart title
-	 * @return an instance of JFreeChart
-	 */
-	private JFreeChart createChart(PieDataset dataset, String title) {
-		JFreeChart chart = ChartFactory.createPieChart3D(
-				title,	// chart title
-				dataset,// data
-				true,	// include legend
-				true,	// include tooltips
-				false	// exclude urls
-		);
+        // Create dataset
+        PieDataset dataset = createDataset(bandList);
+        // Create a chart based on the dataset
+        JFreeChart chart = createChart(dataset, "Rezultati glasanja");
 
-		PiePlot3D plot = (PiePlot3D) chart.getPlot();
-		plot.setStartAngle(290);
-		plot.setDirection(Rotation.CLOCKWISE);
-		plot.setForegroundAlpha(0.5f);
-		return chart;
-	}
+        // Convert to an image and encode it
+        byte[] image = ChartUtilities.encodeAsPNG(chart.createBufferedImage(400, 300));
+        resp.getOutputStream().write(image);
+    }
+
+    /**
+     * Creates a simple dataset.
+     *
+     * @param bandList band list with vote results
+     * @return pie dataset
+     */
+    private PieDataset createDataset(List<BandInfo> bandList) {
+        DefaultPieDataset result = new DefaultPieDataset();
+
+        bandList.forEach(bandInfo -> {
+            result.setValue(bandInfo.name, bandInfo.getVotes());
+        });
+
+        return result;
+    }
+
+    /**
+     * Creates an instance of {@code JFreeChart} whose dataset is specified by
+     * the {@code PieDataset}.
+     *
+     * @param dataset pie dataset
+     * @param title chart title
+     * @return an instance of JFreeChart
+     */
+    private JFreeChart createChart(PieDataset dataset, String title) {
+        JFreeChart chart = ChartFactory.createPieChart3D(
+                title,    // chart title
+                dataset,// data
+                true,    // include legend
+                true,    // include tooltips
+                false    // exclude urls
+        );
+
+        PiePlot3D plot = (PiePlot3D) chart.getPlot();
+        plot.setStartAngle(290);
+        plot.setDirection(Rotation.CLOCKWISE);
+        plot.setForegroundAlpha(0.5f);
+        return chart;
+    }
 
 }

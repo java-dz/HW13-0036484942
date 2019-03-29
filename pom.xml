@@ -7,47 +7,47 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>webapp2 Maven Webapp</name>
   <url>http://maven.apache.org</url>
-  
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
-  
+
   <dependencies>
     <dependency>
-  		<groupId>junit</groupId>
-  		<artifactId>junit</artifactId>
-  		<version>4.12</version>
-  		<scope>test</scope>
-  	</dependency>
-  	<dependency>
-  		<groupId>javax.servlet</groupId>
-  		<artifactId>javax.servlet-api</artifactId>
-  		<version>3.1.0</version>
-  		<scope>provided</scope>
-  	</dependency>
-  	<dependency>
-  		<groupId>javax.servlet.jsp</groupId>
-  		<artifactId>javax.servlet.jsp-api</artifactId>
-  		<version>2.3.1</version>
-  		<scope>provided</scope>
-  	</dependency>
-  	<dependency>
-  		<groupId>javax.servlet.jsp.jstl</groupId>
-  		<artifactId>javax.servlet.jsp.jstl-api</artifactId>
-  		<version>1.2.1</version>
-  	</dependency>
-  	<dependency>
-  		<groupId>org.glassfish.web</groupId>
-  		<artifactId>javax.servlet.jsp.jstl</artifactId>
-  		<version>1.2.1</version>
-  		<exclusions>
-  			<exclusion>
-  				<artifactId>jstl-api</artifactId>
-  				<groupId>javax.servlet.jsp.jstl</groupId>
-  			</exclusion>
-  		</exclusions>
-  	</dependency>
-  	<!-- http://mvnrepository.com/artifact/org.jfree/jfreechart -->
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>3.1.0</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet.jsp</groupId>
+      <artifactId>javax.servlet.jsp-api</artifactId>
+      <version>2.3.1</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet.jsp.jstl</groupId>
+      <artifactId>javax.servlet.jsp.jstl-api</artifactId>
+      <version>1.2.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.web</groupId>
+      <artifactId>javax.servlet.jsp.jstl</artifactId>
+      <version>1.2.1</version>
+      <exclusions>
+        <exclusion>
+          <artifactId>jstl-api</artifactId>
+          <groupId>javax.servlet.jsp.jstl</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <!-- http://mvnrepository.com/artifact/org.jfree/jfreechart -->
     <dependency>
       <groupId>org.jfree</groupId>
       <artifactId>jfreechart</artifactId>
@@ -59,9 +59,8 @@
       <artifactId>poi</artifactId>
       <version>3.14</version>
     </dependency>
-    
   </dependencies>
-  
+
   <build>
     <plugins>
       <plugin>
@@ -93,5 +92,5 @@
     </plugins>
     <finalName>webapp2</finalName>
   </build>
-  
+
 </project>

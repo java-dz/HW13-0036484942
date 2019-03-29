@@ -14,18 +14,18 @@ import javax.servlet.annotation.WebListener;
 @WebListener
 public class AppInfoListener implements ServletContextListener {
 
-	/**
-	 * Registers, or sets the start time attribute of the server.
-	 * 
-	 * @param sce a servlet context event
-	 */
-	@Override
-	public void contextInitialized(ServletContextEvent sce) {
-		sce.getServletContext().setAttribute("startTime", System.currentTimeMillis());
-	}
-	
-	@Override
-	public void contextDestroyed(ServletContextEvent sce) {
-	}
+    /**
+     * Registers, or sets the start time attribute of the server.
+     *
+     * @param sce a servlet context event
+     */
+    @Override
+    public void contextInitialized(ServletContextEvent sce) {
+        sce.getServletContext().setAttribute("startTime", System.currentTimeMillis());
+    }
+
+    @Override
+    public void contextDestroyed(ServletContextEvent sce) {
+    }
 
 }

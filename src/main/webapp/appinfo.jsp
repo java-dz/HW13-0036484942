@@ -6,7 +6,7 @@
   long startTime = (Long) application.getAttribute("startTime");
   long now = System.currentTimeMillis();
   long diff = now - startTime;
-  
+
   long days = TimeUnit.MILLISECONDS.toDays(diff);
   diff -= TimeUnit.DAYS.toMillis(days);
   long hours = TimeUnit.MILLISECONDS.toHours(diff);

@@ -2,6 +2,6 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" metadata-complete="false" version="3.0">
   <display-name>HW13-0036484942</display-name>
   <description>
-     13th homework assignment; JAVA, Academic year 2015/2016; FER
+    13th homework assignment; JAVA, Academic year 2015/2016; FER
   </description>
 </web-app>

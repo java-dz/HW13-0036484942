@@ -30,58 +30,58 @@ import org.jfree.util.Rotation;
  */
 @WebServlet(name="reportImage", urlPatterns={"/reportImage"})
 public class ReportImageServlet extends HttpServlet {
-	/** Serialization UID. */
-	private static final long serialVersionUID = 1L;
+    /** Serialization UID. */
+    private static final long serialVersionUID = 1L;
 
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.setContentType("image/png");
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setContentType("image/png");
 
-		// Create dataset
-		PieDataset dataset = createDataset();
-		// Create a chart based on the dataset
-		JFreeChart chart = createChart(dataset, "OS Usage");
+        // Create dataset
+        PieDataset dataset = createDataset();
+        // Create a chart based on the dataset
+        JFreeChart chart = createChart(dataset, "OS Usage");
 
-		// Convert to an image and encode it
-		byte[] image = ChartUtilities.encodeAsPNG(chart.createBufferedImage(320, 240));
-		resp.getOutputStream().write(image);
-	}
-	
-	/**
-	 * Creates a simple dataset.
-	 * 
-	 * @return pie dataset
-	 */
-	private PieDataset createDataset() {
-		DefaultPieDataset result = new DefaultPieDataset();
-		result.setValue("Linux", 29);
-		result.setValue("Mac", 20);
-		result.setValue("Windows", 51);
-		return result;
-	}
+        // Convert to an image and encode it
+        byte[] image = ChartUtilities.encodeAsPNG(chart.createBufferedImage(320, 240));
+        resp.getOutputStream().write(image);
+    }
 
-	/**
-	 * Creates an instance of {@code JFreeChart} whose dataset is specified by
-	 * the {@code PieDataset}.
-	 * 
-	 * @param dataset pie dataset
-	 * @param title chart title
-	 * @return an instance of JFreeChart
-	 */
-	private JFreeChart createChart(PieDataset dataset, String title) {
-		JFreeChart chart = ChartFactory.createPieChart3D(
-				title,	// chart title
-				dataset,// data
-				true,	// include legend
-				true,	// include tooltips
-				false	// exclude urls
-		);
+    /**
+     * Creates a simple dataset.
+     *
+     * @return pie dataset
+     */
+    private PieDataset createDataset() {
+        DefaultPieDataset result = new DefaultPieDataset();
+        result.setValue("Linux", 29);
+        result.setValue("Mac", 20);
+        result.setValue("Windows", 51);
+        return result;
+    }
 
-		PiePlot3D plot = (PiePlot3D) chart.getPlot();
-		plot.setStartAngle(290);
-		plot.setDirection(Rotation.CLOCKWISE);
-		plot.setForegroundAlpha(0.5f);
-		return chart;
-	}
+    /**
+     * Creates an instance of {@code JFreeChart} whose dataset is specified by
+     * the {@code PieDataset}.
+     *
+     * @param dataset pie dataset
+     * @param title chart title
+     * @return an instance of JFreeChart
+     */
+    private JFreeChart createChart(PieDataset dataset, String title) {
+        JFreeChart chart = ChartFactory.createPieChart3D(
+                title,    // chart title
+                dataset,// data
+                true,    // include legend
+                true,    // include tooltips
+                false    // exclude urls
+        );
+
+        PiePlot3D plot = (PiePlot3D) chart.getPlot();
+        plot.setStartAngle(290);
+        plot.setDirection(Rotation.CLOCKWISE);
+        plot.setForegroundAlpha(0.5f);
+        return chart;
+    }
 
 }

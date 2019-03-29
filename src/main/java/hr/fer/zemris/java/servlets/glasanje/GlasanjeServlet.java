@@ -20,15 +20,15 @@ import hr.fer.zemris.java.servlets.glasanje.GlasanjeUtil.BandInfo;
  */
 @WebServlet(name="glasanje", urlPatterns={"/glasanje"})
 public class GlasanjeServlet extends HttpServlet {
-	/** Serialization UID. */
-	private static final long serialVersionUID = 1L;
+    /** Serialization UID. */
+    private static final long serialVersionUID = 1L;
 
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		List<BandInfo> bandList = GlasanjeUtil.getBandList(req, resp);
-		
-		req.setAttribute("bandList", bandList);
-		req.getRequestDispatcher("/WEB-INF/pages/glasanjeIndex.jsp").forward(req, resp);
-	}
-	
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        List<BandInfo> bandList = GlasanjeUtil.getBandList(req, resp);
+
+        req.setAttribute("bandList", bandList);
+        req.getRequestDispatcher("/WEB-INF/pages/glasanjeIndex.jsp").forward(req, resp);
+    }
+
 }
